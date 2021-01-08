@@ -1,3 +1,5 @@
+import time
+
 from src.DiGraph import DiGraph
 from src.GraphAlgo import GraphAlgo
 
@@ -20,8 +22,8 @@ def check():
     [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]]
     """
     # check0()
-    # check1()
-    check2()
+    check1()
+    # check2()
 
 
 def check0():
@@ -54,13 +56,46 @@ def check1():
     :return:
     """
     g_algo = GraphAlgo()  # init an empty graph - for the GraphAlgo
-    file = "../data/G_10_80_0.json"
+    start = time.time()
+    file = "../data/G_30000_240000_0.json"
     g_algo.load_from_json(file)  # init a GraphAlgo from a json file
-    print(g_algo.connected_components())
-    print(g_algo.shortest_path(0, 3))
+    end = time.time()
+    print("time for 30000 vertices and 240000 edges in seconds:", end - start)
+
+    file1 = "../data/G_20000_160000_0.json"
+    start = time.time()
+    g_algo.load_from_json(file1)  # init a GraphAlgo from a json file
+    end = time.time()
+    print("time for 20000 vertices and 160000 edges in seconds:", end - start)
+
+    file2 = "../data/G_10000_80000_0.json"
+    start = time.time()
+    g_algo.load_from_json(file2)  # init a GraphAlgo from a json file
+    end = time.time()
+    print("time for 10000 vertices and 80000 edges in seconds:", end - start)
+
+    file3 = "../data/G_1000_8000_0.json"
+    start = time.time()
+    g_algo.load_from_json(file3)  # init a GraphAlgo from a json file
+    end = time.time()
+    print("time for 1000 vertices and 8000 edges in seconds:", end - start)
+
+    file4 = "../data/G_100_800_0.json"
+    start = time.time()
+    g_algo.load_from_json(file4)  # init a GraphAlgo from a json file
+    end = time.time()
+    print("time for 100 vertices and 800 edges in seconds:", end - start)
+
+    file5 = "../data/G_10_80_0.json"
+    start = time.time()
+    g_algo.load_from_json(file5)  # init a GraphAlgo from a json file
+    end = time.time()
+    print("time for 10 vertices and 80 edges in seconds:", end - start)
+    # print(g_algo.connected_components())
+    # print(g_algo.shortest_path(0, 3))
     # print(g_algo.shortest_path(3, 1))
     # g_algo.save_to_json(file + '_saved')
-    g_algo.plot_graph()
+    # g_algo.plot_graph()
 
 
 def check2():
@@ -68,7 +103,7 @@ def check2():
       :return:
       """
     g_algo = GraphAlgo()
-    file = '../data/G_30000_240000_0.json'
+    file = '../data/G_10_80_0.json'
     g_algo.load_from_json(file)
     g_algo.get_graph().remove_edge(13, 14)
     g_algo.save_to_json(file + "_edited")

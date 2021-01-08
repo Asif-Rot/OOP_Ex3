@@ -1,4 +1,6 @@
 from src.GraphInterface import GraphInterface
+
+
 class DiGraph(GraphInterface):
 
     MC = 0
@@ -23,7 +25,7 @@ class DiGraph(GraphInterface):
                 id1_in[k] = new_ni[id1]
 
         if id1_in == {}:
-            return None
+            return {}
         return id1_in
 
     def all_out_edges_of_node(self, id1: int) -> dict:
@@ -74,6 +76,8 @@ class DiGraph(GraphInterface):
         return False
 
     def remove_edge(self, node_id1: int, node_id2: int) -> bool:
+        if not {node_id1, node_id2} <= self.nodes.keys():
+            return False
         if node_id1 == node_id2:
             return False
         if node_id2 in self.neighbors.get(node_id1):

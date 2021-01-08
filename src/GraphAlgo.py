@@ -1,13 +1,13 @@
-import random
-
 from src.GraphAlgoInterface import GraphAlgoInterface
 from src.GraphInterface import GraphInterface
 from src.DiGraph import DiGraph
 import queue
+import heapq
 import json
 from typing import List
 import numpy
 import matplotlib.pyplot as plt
+import random
 
 
 class GraphAlgo(GraphAlgoInterface):
@@ -68,7 +68,7 @@ class GraphAlgo(GraphAlgoInterface):
         if not {id1, id2} <= self.graph.nodes.keys():  # Checking if the keys exist
             return float('inf'), []
 
-        if id1==id2:
+        if id1 == id2:
             return float('inf'), []
 
         # Dijkstra algorithm
@@ -79,8 +79,9 @@ class GraphAlgo(GraphAlgoInterface):
             daddy[n] = None
 
         weights[id1] = 0.0
-        q = queue.PriorityQueue(maxsize=self.graph.v_size())
+        q = queue.PriorityQueue()  # (maxsize=self.graph.v_size())
         q.put(id1)
+
         while not q.empty():
             tmp = q.get()
             for e in self.graph.all_out_edges_of_node(tmp):
@@ -172,15 +173,15 @@ class GraphAlgo(GraphAlgoInterface):
         y = []
         n = []
 
-        # for i in self.graph.nodes.keys():
-        #     if i is not None:
-        #         n.append(i)
+        for i in self.graph.nodes.keys():
+            if i is not None:
+                n.append(i)
 
         unused_values_x = []
         unused_values_y = []
         for i in range(len(self.graph.nodes)):
-            unused_values_x.append(random.uniform(35.1850, 35.2150))
-            unused_values_y.append(random.uniform(32.1000, 32.1100))
+            unused_values_x.append(random.uniform(0.0, 50.0))  # (random.uniform(35.1850, 35.2150))
+            unused_values_y.append(random.uniform(0.0, 50.0))  # random.uniform(32.1000, 32.1100))
 
         for j in range(len(self.graph.nodes)):
             tmp = self.graph.nodes[j]
@@ -189,13 +190,10 @@ class GraphAlgo(GraphAlgoInterface):
             else:
                 tupleee.append([unused_values_x.pop(), unused_values_y.pop(), 0.0])
 
-        print(tupleee)
         for k in range(len(tupleee)):
             x.append(float(tupleee[k][0]))
             y.append(float(tupleee[k][1]))
 
-        print(x)
-        print(y)
         ax = plt.axes()
         ax.scatter(x, y)
 
