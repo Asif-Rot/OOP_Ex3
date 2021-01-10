@@ -77,12 +77,12 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(17, self.graph.get_mc())
 
     def test_all_in_edges_of_node(self):
-        self.assertIsNotNone(self.graph.all_in_edges_of_node(1))
-        self.assertIsNotNone(self.graph.all_in_edges_of_node(2))
-        self.assertIsNotNone(self.graph.all_in_edges_of_node(3))
-        self.assertIsNotNone(self.graph.all_in_edges_of_node(4))
+        self.assertIsNot({}, self.graph.all_in_edges_of_node(1))
+        self.assertIsNot({}, self.graph.all_in_edges_of_node(2))
+        self.assertIsNot({}, self.graph.all_in_edges_of_node(3))
+        self.assertIsNot({}, self.graph.all_in_edges_of_node(4))
         self.assertTrue(self.graph.remove_edge(0, 2))
-        self.assertIsNone(self.graph.all_in_edges_of_node(2))
+        self.assertEqual({}, self.graph.all_in_edges_of_node(2))
 
     def test_all_out_edges_of_node(self):
         self.assertIsNotNone(self.graph.all_out_edges_of_node(1))

@@ -115,117 +115,62 @@ class GraphAlgo(GraphAlgoInterface):
 
         return weights.get(id2), path
 
-    def Tarzan(self):
-        V = len(self.graph.nodes)
-        self.count = 0
-        self.low = []
-        self.vis = {}
-        self.stack = []
-        self.Scc = []
-
-        for n in self.graph.nodes:
-            self.vis[n] = False
-            self.low.append(0)
-
-        for i in range(0, V):
-            if not self.vis[i]:
-                self.dfs(i)
-
-    def dfs(self, i: int):
-        self.low[i] = self.count
-        self.count += 1
-        self.vis[i] = True
-        self.stack.append(i)
-        minimum = self.low[i]
-        for n in self.graph.all_out_edges_of_node(i):
-            if not self.vis[n]:
-                self.dfs(n)
-            if self.low[n] < minimum:
-                minimum = self.low[n]
-
-        if minimum < self.low[i]:
-            self.low[i] = minimum
-            return
-
-        self.component = []
-        k = 0
-        while True:
-            k = self.stack.pop()
-            self.component.append(k)
-            self.low[k] = len(self.graph.nodes)
-            if k is i:
-                break
-
-        self.Scc.append(self.component)
-
-    # def connected_component(self, id1: int) -> list:
-    #     # self.Tarzan()
-    #     # for n in range(len(self.Scc)):
-    #     #     for p in range(len(self.Scc[n])):
-    #     #         if id1 == self.Scc[n][p]:
-    #     #             return self.Scc[n]
-    #
-    #     out = self.connected_componentss(id1, 1)
-    #     inn = self.connected_componentss(id1, 0)
-    #     return list(out and inn)
-    #
-    #     return []
-    #
-    # def connected_components(self) -> List[list]:
-    #     self.Tarzan()
-    #     return self.Scc
-
     def connected_component(self, id1: int) -> list:
-        tag = {}
-        if self.graph is None or id1 not in self.graph.nodes:
+        vis = {}
+        q = queue.Queue()
+
+        if id1 not in self.graph.nodes:
             return []
         if self.graph.v_size() == 1:
             return [id1]
-        for i in self.graph.nodes:
-            tag[i] = 0
-        q = deque()
-        tag[id1] = 1
-        q.append(id1)
-        my_list_out = []
-        while q:
-            temp = q.popleft()
-            if tag[temp] == 1:
-                for j in self.graph.all_out_edges_of_node(temp):
-                    if tag[j] == 0:
-                        q.append(j)
-                        tag[j] = 1
-            my_list_out.append(temp)
-            tag[temp] = 2
 
         for i in self.graph.nodes:
-            tag[i] = 0
-        tag[id1] = 1
-        q.append(id1)
-        my_list_in = []
-        while q:
-            temp = q.popleft()
-            if tag[temp] == 1:
-                if self.graph.all_in_edges_of_node(temp) is not None:
-                    for j in self.graph.all_in_edges_of_node(temp):
-                        if tag[j] == 0:
-                            q.append(j)
-                            tag[j] = 1
-                my_list_in.append(temp)
-                tag[temp] = 2
-        return list(set(my_list_out) & set(my_list_in))
+            vis[i] = "not_vis"
 
+        vis[id1] = "vis"
+        q.put(id1)
+
+        out_list = []
+        while not q.empty():
+            node = q.get()
+            if vis[node] == "vis":
+                for k in self.graph.all_out_edges_of_node(node):
+                    if vis[k] == "not_vis":
+                        q.put(k)
+                        vis[k] = "vis"
+
+            out_list.append(node)
+            vis[node] = "complete"
+
+        for i in self.graph.nodes:
+            vis[i] = "not_vis"
+
+        vis[id1] = "vis"
+        q.put(id1)
+
+        in_list = []
+        while not q.empty():
+            node = q.get()
+            if vis[node] == "vis":
+                for k in self.graph.all_in_edges_of_node(node):
+                    if vis[k] == "not_vis":
+                        q.put(k)
+                        vis[k] = "vis"
+                in_list.append(node)
+                vis[node] = "complete"
+        return list(set(out_list) & set(in_list))
 
     def connected_components(self) -> List[list]:
-        if self.graph is None:
+        if len(self.graph.nodes) == 0:
             return []
         vis = {}
         list_for_us = []
         for i in self.graph.nodes:
             if i not in vis:
-                temp_list = self.connected_component(i)
-                for j in temp_list:
+                sure = self.connected_component(i)
+                for j in sure:
                     vis[j] = j
-                list_for_us.append(temp_list)
+                list_for_us.append(sure)
         return list_for_us
 
     def plot_graph(self) -> None:

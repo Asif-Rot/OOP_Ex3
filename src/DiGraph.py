@@ -26,7 +26,7 @@ class DiGraph(GraphInterface):
                 id1_in[k] = new_ni[id1]
 
         if id1_in == {}:
-            return None
+            return {}
         return id1_in
 
     def all_out_edges_of_node(self, id1: int) -> dict:
