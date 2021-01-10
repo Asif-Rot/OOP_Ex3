@@ -21,9 +21,9 @@ def check():
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
     [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]]
     """
-    # check0()
+    check0()
     # check1()
-    check2()
+    # check2()
 
 
 def check0():
@@ -46,6 +46,7 @@ def check0():
 
     g.remove_edge(1, 3)
     g.add_edge(1, 3, 10)
+    print(g.__repr__())
     # print(g)  # prints the __repr__ (func output)
     # print(g.get_all_v())  # prints a dict with all the graph's vertices.
     # print(g.all_in_edges_of_node(1))

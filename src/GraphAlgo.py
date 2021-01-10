@@ -58,7 +58,7 @@ class GraphAlgo(GraphAlgoInterface):
                     if key is not None:
                         graph["Nodes"].append({"pos": str(pos), "id": key})
                     else:
-                        graph["Nodes"].append({"id": key})
+                        graph["Nodes"].append({"pos": None, "id": key})
                 json.dump(graph, file)
                 return True
             except ValueError as ve:
@@ -186,8 +186,8 @@ class GraphAlgo(GraphAlgoInterface):
         unused_values_x = []
         unused_values_y = []
         for i in range(len(self.graph.nodes)):
-            unused_values_x.append(random.uniform(0.0, 50.0))  # (random.uniform(35.1850, 35.2150))
-            unused_values_y.append(random.uniform(0.0, 50.0))  # random.uniform(32.1000, 32.1100))
+            unused_values_x.append(random.uniform(0.0, 10000.0))
+            unused_values_y.append(random.uniform(0.0, 10000.0))
 
         for j in range(len(self.graph.nodes)):
             tmp = self.graph.nodes[j]
@@ -202,6 +202,8 @@ class GraphAlgo(GraphAlgoInterface):
 
         ax = plt.axes()
         ax.scatter(x, y)
+        for o, txt in enumerate(n):
+            ax.annotate(n[o], (x[o], y[o] + 0.10))
 
         for h in self.graph.nodes:
             for p in self.graph.neighbors.get(h):
@@ -216,12 +218,10 @@ class GraphAlgo(GraphAlgoInterface):
                             arrowprops=dict(arrowstyle="->",
                                             connectionstyle="arc3"),
                             )
-        for o, txt in enumerate(n):
-            ax.annotate(n[o], (x[o], y[o] + 0.05))
+
 
         plt.xlabel(" x --> ")
         plt.ylabel(" y --> ")
         plt.title("Our graph!")
-        # ax.set_facecolor('xkcd:mint green')
 
         plt.show()

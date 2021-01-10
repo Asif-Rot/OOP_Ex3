@@ -104,3 +104,6 @@ class DiGraph(GraphInterface):
                     "src": i, "dest": k, "w": self.neighbors[i][k]}    # Edges = {0, 1, 1.2}
 
         return "Edges "+format(Edges)+", Nodes "+format(Nodes)
+
+    def __repr__(self):
+        return f"{self}"
