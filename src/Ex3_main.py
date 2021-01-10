@@ -22,8 +22,8 @@ def check():
     [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]]
     """
     # check0()
-    check1()
-    # check2()
+    # check1()
+    check2()
 
 
 def check0():
@@ -32,22 +32,31 @@ def check0():
     :return:
     """
     g = DiGraph()  # creates an empty directed graph
-    for n in range(4):
+    for n in range(10):
         g.add_node(n)
     g.add_edge(0, 1, 1)
     g.add_edge(1, 0, 1.1)
-    g.add_edge(1, 2, 1.3)
+    g.add_edge(1, 2, 1.1)
+    g.add_edge(2, 1, 1.3)
     g.add_edge(2, 3, 1.1)
+    g.add_edge(3, 2, 1.1)
     g.add_edge(1, 3, 1.9)
+    g.add_edge(3, 5, 1.9)
+    g.add_edge(5, 1, 1.9)
+
     g.remove_edge(1, 3)
     g.add_edge(1, 3, 10)
-    print(g)  # prints the __repr__ (func output)
-    print(g.get_all_v())  # prints a dict with all the graph's vertices.
-    print(g.all_in_edges_of_node(1))
-    print(g.all_out_edges_of_node(1))
-    g_algo = GraphAlgo()
-    print(g_algo.shortest_path(0, 3))
-    g_algo.plot_graph()
+    # print(g)  # prints the __repr__ (func output)
+    # print(g.get_all_v())  # prints a dict with all the graph's vertices.
+    # print(g.all_in_edges_of_node(1))
+    # print(g.all_out_edges_of_node(1))
+    g_algo = GraphAlgo(g)
+    # print(g_algo.shortest_path(0, 3))
+    print(g_algo.connected_components())
+    print(g_algo.connected_component(5))
+    # print(g_algo.connected_components())
+
+    # g_algo.plot_graph()
 
 
 def check1():
@@ -55,55 +64,62 @@ def check1():
        This function tests the naming (main methods of the GraphAlgo class, as defined in GraphAlgoInterface.
     :return:
     """
-    g_algo = GraphAlgo()  # init an empty graph - for the GraphAlgo
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
     start = time.time()
     file = "../data/G_30000_240000_0.json"
     g_algo.load_from_json(file)  # init a GraphAlgo from a json file
     end = time.time()
     print("time for 30000 vertices and 240000 edges in seconds:", end - start)
 
+    g_algo = GraphAlgo(g)
     file1 = "../data/G_20000_160000_0.json"
     start = time.time()
     g_algo.load_from_json(file1)  # init a GraphAlgo from a json file
     end = time.time()
     print("time for 20000 vertices and 160000 edges in seconds:", end - start)
 
+    g_algo = GraphAlgo(g)
     file2 = "../data/G_10000_80000_0.json"
     start = time.time()
     g_algo.load_from_json(file2)  # init a GraphAlgo from a json file
     end = time.time()
     print("time for 10000 vertices and 80000 edges in seconds:", end - start)
 
+    g_algo = GraphAlgo(g)
     file3 = "../data/G_1000_8000_0.json"
     start = time.time()
     g_algo.load_from_json(file3)  # init a GraphAlgo from a json file
     end = time.time()
     print("time for 1000 vertices and 8000 edges in seconds:", end - start)
 
+    g_algo = GraphAlgo(g)
     file4 = "../data/G_100_800_0.json"
     start = time.time()
     g_algo.load_from_json(file4)  # init a GraphAlgo from a json file
     end = time.time()
     print("time for 100 vertices and 800 edges in seconds:", end - start)
 
+    g_algo = GraphAlgo(g)
     file5 = "../data/G_10_80_0.json"
     start = time.time()
     g_algo.load_from_json(file5)  # init a GraphAlgo from a json file
     end = time.time()
     print("time for 10 vertices and 80 edges in seconds:", end - start)
-    # print(g_algo.connected_components())
-    # print(g_algo.shortest_path(0, 3))
-    # print(g_algo.shortest_path(3, 1))
-    # g_algo.save_to_json(file + '_saved')
-    # g_algo.plot_graph()
+    print(g_algo.connected_componentss())
+    print(g_algo.shortest_path(0, 3))
+    print(g_algo.shortest_path(3, 1))
+    g_algo.save_to_json(file + '_saved')
+    g_algo.plot_graph()
 
 
 def check2():
     """ This function tests the naming, basic testing over A5 json file.
       :return:
       """
-    g_algo = GraphAlgo()
-    file = '../data/G_10_80_0.json'
+    g = DiGraph()
+    g_algo = GraphAlgo(g)
+    file = '../data/G_30000_240000_0.json'
     g_algo.load_from_json(file)
     g_algo.get_graph().remove_edge(13, 14)
     g_algo.save_to_json(file + "_edited")
@@ -115,7 +131,7 @@ def check2():
     print(dist, path)
     dist, path = g_algo.shortest_path(2, 20)
     print(dist, path)
-    print(g_algo.connected_component(0))
+    print(g_algo.connected_component(1))
     print(g_algo.connected_components())
     g_algo.plot_graph()
 

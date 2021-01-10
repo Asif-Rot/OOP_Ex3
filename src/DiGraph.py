@@ -3,10 +3,11 @@ from src.GraphInterface import GraphInterface
 
 class DiGraph(GraphInterface):
 
-    MC = 0
-    edgeSize = 0
-    nodes = {}
-    neighbors = {}
+    def __init__(self):
+        self.MC = 0
+        self.edgeSize = 0
+        self.nodes = {}
+        self.neighbors = {}
 
     def v_size(self) -> int:
         return len(self.nodes)
@@ -25,7 +26,7 @@ class DiGraph(GraphInterface):
                 id1_in[k] = new_ni[id1]
 
         if id1_in == {}:
-            return {}
+            return None
         return id1_in
 
     def all_out_edges_of_node(self, id1: int) -> dict:

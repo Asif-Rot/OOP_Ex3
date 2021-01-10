@@ -1,3 +1,6 @@
+import sys
+from collections import deque
+
 from src.GraphAlgoInterface import GraphAlgoInterface
 from src.GraphInterface import GraphInterface
 from src.DiGraph import DiGraph
@@ -11,16 +14,16 @@ import random
 
 
 class GraphAlgo(GraphAlgoInterface):
-    graph = DiGraph()
-    count = 0
-    vis = {}
-    low = []
-    stack = []
-    Scc = []
-    component = []
+    sys.setrecursionlimit(10 ** 8)
 
-    def __init__(self):
-        self.GraphInterface = None
+    def __init__(self, g: DiGraph = None):
+        self.graph = g
+        self.count = 0
+        self.vis = {}
+        self.low = []
+        self.stack = []
+        self.Scc = []
+        self.component = []
 
     def get_graph(self) -> GraphInterface:
         return self.graph
@@ -79,7 +82,7 @@ class GraphAlgo(GraphAlgoInterface):
             daddy[n] = None
 
         weights[id1] = 0.0
-        q = queue.PriorityQueue()  # (maxsize=self.graph.v_size())
+        q = queue.PriorityQueue()
         q.put(id1)
 
         while not q.empty():
@@ -114,6 +117,7 @@ class GraphAlgo(GraphAlgoInterface):
 
     def Tarzan(self):
         V = len(self.graph.nodes)
+        self.count = 0
         self.low = []
         self.vis = {}
         self.stack = []
@@ -154,18 +158,75 @@ class GraphAlgo(GraphAlgoInterface):
 
         self.Scc.append(self.component)
 
-    def connected_component(self, id1: int) -> list:
-        self.Tarzan()
-        for n in range(len(self.Scc)):
-            for p in range(len(self.Scc[n])):
-                if id1 in self.Scc[p]:
-                    return self.Scc[p]
+    # def connected_component(self, id1: int) -> list:
+    #     # self.Tarzan()
+    #     # for n in range(len(self.Scc)):
+    #     #     for p in range(len(self.Scc[n])):
+    #     #         if id1 == self.Scc[n][p]:
+    #     #             return self.Scc[n]
+    #
+    #     out = self.connected_componentss(id1, 1)
+    #     inn = self.connected_componentss(id1, 0)
+    #     return list(out and inn)
+    #
+    #     return []
+    #
+    # def connected_components(self) -> List[list]:
+    #     self.Tarzan()
+    #     return self.Scc
 
-        return []
+    def connected_component(self, id1: int) -> list:
+        tag = {}
+        if self.graph is None or id1 not in self.graph.nodes:
+            return []
+        if self.graph.v_size() == 1:
+            return [id1]
+        for i in self.graph.nodes:
+            tag[i] = 0
+        q = deque()
+        tag[id1] = 1
+        q.append(id1)
+        my_list_out = []
+        while q:
+            temp = q.popleft()
+            if tag[temp] == 1:
+                for j in self.graph.all_out_edges_of_node(temp):
+                    if tag[j] == 0:
+                        q.append(j)
+                        tag[j] = 1
+            my_list_out.append(temp)
+            tag[temp] = 2
+
+        for i in self.graph.nodes:
+            tag[i] = 0
+        tag[id1] = 1
+        q.append(id1)
+        my_list_in = []
+        while q:
+            temp = q.popleft()
+            if tag[temp] == 1:
+                if self.graph.all_in_edges_of_node(temp) is not None:
+                    for j in self.graph.all_in_edges_of_node(temp):
+                        if tag[j] == 0:
+                            q.append(j)
+                            tag[j] = 1
+                my_list_in.append(temp)
+                tag[temp] = 2
+        return list(set(my_list_out) & set(my_list_in))
+
 
     def connected_components(self) -> List[list]:
-        self.Tarzan()
-        return self.Scc
+        if self.graph is None:
+            return []
+        vis = {}
+        list_for_us = []
+        for i in self.graph.nodes:
+            if i not in vis:
+                temp_list = self.connected_component(i)
+                for j in temp_list:
+                    vis[j] = j
+                list_for_us.append(temp_list)
+        return list_for_us
 
     def plot_graph(self) -> None:
         tupleee = []
