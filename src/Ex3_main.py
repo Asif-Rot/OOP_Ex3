@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 from src.DiGraph import DiGraph
 from src.GraphAlgo import GraphAlgo
@@ -21,8 +22,8 @@ def check():
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
     [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]]
     """
-    check0()
-    # check1()
+    # check0()
+    check1()
     # check2()
 
 
@@ -67,51 +68,199 @@ def check1():
     """
     g = DiGraph()
     g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
-    start = time.time()
-    file = "../data/G_30000_240000_0.json"
+    file = "../data/G_10_80_1.json"
     g_algo.load_from_json(file)  # init a GraphAlgo from a json file
-    end = time.time()
-    print("time for 30000 vertices and 240000 edges in seconds:", end - start)
+    start = time.time_ns()
+    g_algo.connected_components()
+    end = time.time_ns()
+    print("time for connected components 10 vertices and 80 edges in seconds:", ((end - start)/1000000000))
 
-    g_algo = GraphAlgo(g)
-    file1 = "../data/G_20000_160000_0.json"
-    start = time.time()
-    g_algo.load_from_json(file1)  # init a GraphAlgo from a json file
-    end = time.time()
-    print("time for 20000 vertices and 160000 edges in seconds:", end - start)
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_10_80_1.json"
+    g_algo.load_from_json(file)
+    start = time.time_ns()
+    print(g_algo.connected_component(3))
+    end = time.time_ns()
+    print("time for connected component  10 vertices and 80 edges in seconds:", ((end - start)/1000000000))
 
-    g_algo = GraphAlgo(g)
-    file2 = "../data/G_10000_80000_0.json"
-    start = time.time()
-    g_algo.load_from_json(file2)  # init a GraphAlgo from a json file
-    end = time.time()
-    print("time for 10000 vertices and 80000 edges in seconds:", end - start)
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_100_800_1.json"
+    g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    start = time.time_ns()
+    g_algo.connected_components()
+    end = time.time_ns()
+    print("time for connected components 100 vertices and 800 edges in seconds:", ((end - start)/1000000000))
 
-    g_algo = GraphAlgo(g)
-    file3 = "../data/G_1000_8000_0.json"
-    start = time.time()
-    g_algo.load_from_json(file3)  # init a GraphAlgo from a json file
-    end = time.time()
-    print("time for 1000 vertices and 8000 edges in seconds:", end - start)
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_100_800_1.json"
+    g_algo.load_from_json(file)
+    start = time.time_ns()
+    g_algo.connected_component(0)
+    end = time.time_ns()
+    print("time for connected component  100 vertices and 800 edges in seconds:", ((end - start)/1000000000))
 
-    g_algo = GraphAlgo(g)
-    file4 = "../data/G_100_800_0.json"
-    start = time.time()
-    g_algo.load_from_json(file4)  # init a GraphAlgo from a json file
-    end = time.time()
-    print("time for 100 vertices and 800 edges in seconds:", end - start)
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_1000_8000_1.json"
+    g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    start = time.time_ns()
+    g_algo.connected_components()
+    end = time.time_ns()
+    print("time for connected components 1000 vertices and 8000 edges in seconds:", ((end - start)/1000000000))
 
-    g_algo = GraphAlgo(g)
-    file5 = "../data/G_10_80_0.json"
-    start = time.time()
-    g_algo.load_from_json(file5)  # init a GraphAlgo from a json file
-    end = time.time()
-    print("time for 10 vertices and 80 edges in seconds:", end - start)
-    print(g_algo.connected_components())
-    print(g_algo.shortest_path(0, 3))
-    print(g_algo.shortest_path(3, 1))
-    g_algo.save_to_json(file + '_saved')
-    g_algo.plot_graph()
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_1000_8000_1.json"
+    g_algo.load_from_json(file)
+    start = time.time_ns()
+    g_algo.connected_component(0)
+    end = time.time_ns()
+    print("time for connected component  1000 vertices and 8000 edges in seconds:", ((end - start)/1000000000))
+
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_10000_80000_1.json"
+    g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    start = time.time_ns()
+    g_algo.connected_components()
+    end = time.time_ns()
+    print("time for connected components 10000 vertices and 80000 edges in seconds:", ((end - start)/1000000000))
+
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_10000_80000_1.json"
+    g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    start = time.time_ns()
+    g_algo.connected_component(0)
+    end = time.time_ns()
+    print("time for connected component  10000 vertices and 80000 edges in seconds:", ((end - start)/1000000000))
+
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_20000_160000_1.json"
+    g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    start = time.time_ns()
+    g_algo.connected_components()
+    end = time.time_ns()
+    print("time for connected components 20000 vertices and 160000 edges in seconds:", ((end - start)/1000000000))
+
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_20000_160000_1.json"
+    g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    start = time.time_ns()
+    g_algo.connected_component(0)
+    end = time.time_ns()
+    print("time for connected component  20000 vertices and 160000 edges in seconds:", ((end - start)/1000000000))
+
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_30000_240000_1.json"
+    g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    start = time.time_ns()
+    g_algo.connected_components()
+    end = time.time_ns()
+    print("time for connected components 30000 vertices and 240000 edges in seconds:", ((end - start)/1000000000))
+
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_30000_240000_1.json"
+    g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    start = time.time_ns()
+    g_algo.connected_component(0)
+    end = time.time_ns()
+    print("time for connected component  30000 vertices and 240000 edges in seconds:", (end - start)/1000000000)
+
+    # g = DiGraph()
+    # g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    # file = "../data/G_10_80_1.json"
+    # g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    # start = time.time_ns()
+    # print(g_algo.shortest_path(1, 8))
+    # end = time.time_ns()
+    # print("time for 10 vertices and 80 edges in seconds:", ((end - start)/1000000000))
+    #
+    # g = DiGraph()
+    # g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    # file = "../data/G_100_800_1.json"
+    # g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    # start = time.time_ns()
+    # print(g_algo.shortest_path(1, 8))
+    # end = time.time_ns()
+    # print("time for 100 vertices and 800 edges in seconds:", ((end - start) / 1000000000))
+    #
+    # g = DiGraph()
+    # g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    # file = "../data/G_1000_8000_1.json"
+    # g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    # start = time.time_ns()
+    # print(g_algo.shortest_path(1, 8))
+    # end = time.time_ns()
+    # print("time for 1000 vertices and 8000 edges in seconds:", ((end - start) / 1000000000))
+    #
+    # g = DiGraph()
+    # g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    # file = "../data/G_10000_80000_1.json"
+    # g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    # start = time.time_ns()
+    # print(g_algo.shortest_path(1, 8))
+    # end = time.time_ns()
+    # print("time for 10000 vertices and 80000 edges in seconds:", ((end - start) / 1000000000))
+    #
+    # g = DiGraph()
+    # g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    # file = "../data/G_20000_160000_1.json"
+    # g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    # start = time.time_ns()
+    # print(g_algo.shortest_path(1, 8))
+    # end = time.time_ns()
+    # print("time for 20000 vertices and 160000 edges in seconds:", ((end - start) / 1000000000))
+    #
+    # g = DiGraph()
+    # g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    # file = "../data/G_30000_240000_1.json"
+    # g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    # start = time.time_ns()
+    # print(g_algo.shortest_path(1, 8))
+    # end = time.time_ns()
+    # print("time for 30000 vertices and 240000 edges in seconds:", ((end - start) / 1000000000))
+    #
+
+# g_algo = GraphAlgo(g)
+#     file2 = "../data/G_10000_80000_0.json"
+#     start = time.time()
+#     g_algo.load_from_json(file2)  # init a GraphAlgo from a json file
+#     end = time.time()
+#     print("time for 10000 vertices and 80000 edges in seconds:", end - start)
+#
+#     g_algo = GraphAlgo(g)
+#     file3 = "../data/G_1000_8000_0.json"
+#     start = time.time()
+#     g_algo.load_from_json(file3)  # init a GraphAlgo from a json file
+#     end = time.time()
+#     print("time for 1000 vertices and 8000 edges in seconds:", end - start)
+#
+#     g_algo = GraphAlgo(g)
+#     file4 = "../data/G_100_800_0.json"
+#     start = time.time()
+#     g_algo.load_from_json(file4)  # init a GraphAlgo from a json file
+#     end = time.time()
+#     print("time for 100 vertices and 800 edges in seconds:", end - start)
+#
+#     g_algo = GraphAlgo(g)
+#     file5 = "../data/G_10_80_0.json"
+#     start = time.time()
+#     g_algo.load_from_json(file5)  # init a GraphAlgo from a json file
+#     end = time.time()
+#     print("time for 10 vertices and 80 edges in seconds:", end - start)
+#     print(g_algo.connected_components())
+#     print(g_algo.shortest_path(0, 3))
+#     print(g_algo.shortest_path(3, 1))
+#     g_algo.save_to_json(file + '_saved')
+#     g_algo.plot_graph()
 
 
 def check2():

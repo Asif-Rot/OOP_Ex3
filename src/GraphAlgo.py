@@ -1,34 +1,35 @@
-import sys
-from collections import deque
-
 from src.GraphAlgoInterface import GraphAlgoInterface
 from src.GraphInterface import GraphInterface
 from src.DiGraph import DiGraph
+
 import queue
-import heapq
 import json
 from typing import List
-import numpy
 import matplotlib.pyplot as plt
 import random
 
 
 class GraphAlgo(GraphAlgoInterface):
-    sys.setrecursionlimit(10 ** 8)
 
     def __init__(self, g: DiGraph = None):
+        """
+        Init graph Algo
+        """
         self.graph = g
-        self.count = 0
         self.vis = {}
-        self.low = []
-        self.stack = []
-        self.Scc = []
-        self.component = []
 
     def get_graph(self) -> GraphInterface:
+        """
+        @return the directed graph on which the algorithm works on.
+        """
         return self.graph
 
     def load_from_json(self, file_name: str) -> bool:
+        """
+        Loads a graph from a json file.
+        @param file_name: The path to the json file
+        @returns True if the loading was successful, False o.w.
+        """
         with open(file_name) as json_file:
             data = json.load(json_file)
             if data is not None:
@@ -47,6 +48,11 @@ class GraphAlgo(GraphAlgoInterface):
         return False
 
     def save_to_json(self, file_name: str) -> bool:
+        """
+        Saves the graph in JSON format to a file
+        @param file_name: The path to the out file
+        @return: True if the save was successful, False o.w.
+        """
         with open(file_name, 'w') as file:
             try:
                 graph = {"Nodes": [], "Edges": []}
@@ -68,6 +74,30 @@ class GraphAlgo(GraphAlgoInterface):
                 file.close()
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
+        """
+        Returns the shortest path from node id1 to node id2 using Dijkstra's Algorithm
+        @param id1: The start node id
+        @param id2: The end node id
+        @return: The distance of the path, a list of the nodes ids that the path goes through
+
+        Example:
+#        >>> from GraphAlgo import GraphAlgo
+#        >>> g_algo = GraphAlgo()
+#        >>> g_algo.addNode(0)
+#        >>> g_algo.addNode(1)
+#        >>> g_algo.addNode(2)
+#        >>> g_algo.addEdge(0,1,1)
+#        >>> g_algo.addEdge(1,2,4)
+#        >>> g_algo.shortestPath(0,1)
+#        (1, [0, 1])
+#        >>> g_algo.shortestPath(0,2)
+#        (5, [0, 1, 2])
+
+        Notes:
+        If there is no path between id1 and id2, or one of them dose not exist the function returns (float('inf'),[])
+        More info:
+        https://en.wikipedia.org/wiki/Dijkstra's_algorithm
+        """
         if not {id1, id2} <= self.graph.nodes.keys():  # Checking if the keys exist
             return float('inf'), []
 
@@ -116,6 +146,14 @@ class GraphAlgo(GraphAlgoInterface):
         return weights.get(id2), path
 
     def connected_component(self, id1: int) -> list:
+        """
+        Finds the Strongly Connected Component(SCC) that node id1 is a part of.
+        @param id1: The node id
+        @return: The list of nodes in the SCC
+
+        Notes:
+        If the graph is None or id1 is not in the graph, the function should return an empty list []
+        """
         vis = {}
         q = queue.Queue()
 
@@ -161,6 +199,13 @@ class GraphAlgo(GraphAlgoInterface):
         return list(set(out_list) & set(in_list))
 
     def connected_components(self) -> List[list]:
+        """
+        Finds all the Strongly Connected Component(SCC) in the graph.
+        @return: The list all SCC
+
+        Notes:
+        If the graph is None the function should return an empty list []
+        """
         if len(self.graph.nodes) == 0:
             return []
         vis = {}
@@ -174,6 +219,13 @@ class GraphAlgo(GraphAlgoInterface):
         return list_for_us
 
     def plot_graph(self) -> None:
+        """
+        Plots the graph.
+        If the nodes have a position, the nodes will be placed there.
+        Otherwise, they will be placed in a random but elegant manner.
+        @return: None
+        """
+
         tupleee = []
         x = []
         y = []
@@ -218,7 +270,6 @@ class GraphAlgo(GraphAlgoInterface):
                             arrowprops=dict(arrowstyle="->",
                                             connectionstyle="arc3"),
                             )
-
 
         plt.xlabel(" x --> ")
         plt.ylabel(" y --> ")
