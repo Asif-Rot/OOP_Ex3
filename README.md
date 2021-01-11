@@ -3,7 +3,7 @@ last ex for the OOP course.
 3 parts of this excrecise:
 1. write two classes to implement an directional weighed graph.
 
-  ###a. DiGraph. this class implements the simple actions to build the graph:
+  ### a. DiGraph. this class implements the simple actions to build the graph:
     
     add node
     
@@ -24,7 +24,7 @@ last ex for the OOP course.
    The way we built the graph:
     There are 2 dictionaries: one for nodes and one for there neighbors. every single node keeps a list of his "out nodes" (as dest)
     
-  ###b. GraphAlgo. this class implements the algorithms on the graph, and some more methodes:
+  ### b. GraphAlgo. this class implements the algorithms on the graph, and some more methodes:
       
     load_from_json: load a graph from a json file. If there is no position for some node it will be placed by a random position.
       
