@@ -87,10 +87,10 @@ _this class implements the algorithms in the graph, and some other more methods:
 ![](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
 
     
-2. Tarjan's strongly connected components algorithm is an algorithm for finding the strongly connected components (SCCs) of a directed graph.          
-   (https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm)
+2. Kosaraju's strongly connected components algorithm is an algorithm for finding the strongly connected components (SCCs) of a directed graph.          
+   (https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
    
-![](https://upload.wikimedia.org/wikipedia/commons/6/60/Tarjan%27s_Algorithm_Animation.gif)
+![](https://miro.medium.com/max/1666/1*mW2CO2dhTkvgsJK7oSrFJg.gif)
       
 #### Test class : TestGraphAlgo
 
@@ -106,7 +106,7 @@ In this part we ran the algorithms for comparisons:
   
   _More info in the Wiki page:_
   
-  [Click here](https://github.com/Asif-Rot/OOP_Ex3/wiki/Comparisons)
+  [Click here](https://github.com/Asif-Rot/OOP_Ex3/wiki)
   
   
         
