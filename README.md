@@ -97,14 +97,14 @@ _this class implements the algorithms in the graph, and some other more methods:
 - In this test all the methodes are being test. 
                   
 
-## Perform comparisons between the last project (OOP_ex2), NetworkX, and our graph
+## Perform comparisons between this project, our last project (OOP_Ex2) and NetworkX package
 
 In this part we ran the algorithms for comparisons:
 - shortest_path
 - connected_component
 - connected_components
   
-  More info in the Wiki page:
+  _More info in the Wiki page:_
   
   [Click here](https://github.com/Asif-Rot/OOP_Ex3/wiki)
   
