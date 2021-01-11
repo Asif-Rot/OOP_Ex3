@@ -56,7 +56,7 @@ _this class implements the simple actions that build our graph:_
     
 #### Test class : TestDiGraph
 
-- In this class all the graph methodes are being tested.
+- In this class all the graph methods are being tested.
     
 
 ## Write a class to implement the algorithms for the directed weighted graph
