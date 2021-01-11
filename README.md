@@ -49,10 +49,10 @@
     
 #### Algorithms:
     
-            1. Dijkstra's algorithm: an algorithm for finding the shortest paths between nodes in a graph. (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) 
+1. Dijkstra's algorithm: an algorithm for finding the shortest paths between nodes in a graph. (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) 
     
-            2. Tarjan's strongly connected components algorithm is an algorithm for finding the strongly connected components (SCCs) of a directed graph.          
-               (https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm)
+2. Tarjan's strongly connected components algorithm is an algorithm for finding the strongly connected components (SCCs) of a directed graph.          
+   (https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm)
       
 #### Test class : TestDiGraph.
 
