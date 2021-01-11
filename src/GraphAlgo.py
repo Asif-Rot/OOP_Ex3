@@ -217,21 +217,21 @@ class GraphAlgo(GraphAlgoInterface):
                 if done:
                     queue2.pop()
 
-        LL = [[] for _ in range(nodes)]
+        before_scc = [[] for _ in range(nodes)]
         for i in range(len(before)):
             if before[i] == i:
-                LL[i].append(before[i])
+                before_scc[i].append(before[i])
             else:
                 t = before[i]
                 if t is not None:
-                    LL[t].append(i)
-        MM = []
-        for i in range(len(LL)):
-            tmp = LL[i]
+                    before_scc[t].append(i)
+        scc = []
+        for i in range(len(before_scc)):
+            tmp = before_scc[i]
             if len(tmp) != 0:
-                MM.append(tmp)
+                scc.append(tmp)
 
-        return MM
+        return scc
 
     def plot_graph(self) -> None:
         """
