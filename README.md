@@ -62,7 +62,7 @@
    
 ![Alt Text](https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm#/media/File:Tarjan's_Algorithm_Animation.gif)
       
-#### Test class : TestDiGraph.
+#### Test class : TestGraphAlgo.
 
                   In this test all the methodes are being test. 
                   
