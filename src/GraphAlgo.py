@@ -175,48 +175,54 @@ class GraphAlgo(GraphAlgoInterface):
         Notes:
         If the graph is None the function should return an empty list []
         """
-        N = len(self.graph.nodes)
-        T = [[] for _ in range(N)]
-        L = []
-        U = [False] * N
+        nodes = len(self.graph.nodes)
+        tmp_list = [[] for _ in range(nodes)]
+        List = []
+        List_bool = [False] * nodes
 
-        for u in range(N):
-            if not U[u]:
-                U[u], S = True, [u]
-                while S:
-                    u, done = S[-1], True
-                    for v in self.graph.neighbors[u]:
-                        T[v].append(u)
-                        if not U[v]:
-                            U[v], done = True, False
-                            S.append(v)
+        for i in range(nodes):
+            if not List_bool[i]:
+                List_bool[i] = True
+                queue = [i]
+                while queue:
+                    i = queue[-1]
+                    done = True
+                    for v in self.graph.neighbors[i]:
+                        tmp_list[v].append(i)
+                        if not List_bool[v]:
+                            List_bool[v] = True
+                            done = False
+                            queue.append(v)
                             break
                     if done:
-                        S.pop()
-                        L.append(u)
+                        queue.pop()
+                        List.append(i)
 
-        C = [None] * N
-        while L:
-            r = L.pop()
-            S = [r]
-            if U[r]:
-                U[r], C[r] = False, r
-            while S:
-                u, done = S[-1], True
-                for v in T[u] :
-                    if U[v]:
-                        U[v] = done = False
-                        S.append(v)
-                        C[v] = r
+        before = [None] * nodes
+        while List:
+            tmp = List.pop()
+            queue2 = [tmp]
+            if List_bool[tmp]:
+                List_bool[tmp] = False
+                before[tmp] = tmp
+            while queue2:
+                u = queue2[-1]
+                done = True
+                for j in tmp_list[u]:
+                    if List_bool[j]:
+                        List_bool[j] = done = False
+                        queue2.append(j)
+                        before[j] = tmp
                         break
                 if done:
-                    S.pop()
-        LL = [[] for _ in range(N)]
-        for i in range(len(C)):
-            if C[i] == i:
-                LL[i].append(C[i])
+                    queue2.pop()
+
+        LL = [[] for _ in range(nodes)]
+        for i in range(len(before)):
+            if before[i] == i:
+                LL[i].append(before[i])
             else:
-                t = C[i]
+                t = before[i]
                 if t is not None:
                     LL[t].append(i)
         MM = []
@@ -224,6 +230,7 @@ class GraphAlgo(GraphAlgoInterface):
             tmp = LL[i]
             if len(tmp) != 0:
                 MM.append(tmp)
+
         return MM
 
     def plot_graph(self) -> None:
