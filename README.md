@@ -94,7 +94,7 @@ _this class implements the algorithms in the graph, and some other more methods:
       
 #### Test class : TestGraphAlgo
 
-- In this test all the methodes are being test. 
+- In this test all the methods are being test. 
                   
 
 ## Perform comparisons between this project, our last project (OOP_Ex2) and NetworkX package
