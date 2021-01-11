@@ -1,5 +1,4 @@
 import time
-from datetime import datetime
 
 from src.DiGraph import DiGraph
 from src.GraphAlgo import GraphAlgo
