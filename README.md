@@ -51,7 +51,7 @@
       
     plot_graph: Plots the graph.
     
-#### Algorithms:
+#### **Algorithms:**
     
 1. Dijkstra's algorithm: an algorithm for finding the shortest paths between nodes in a graph. (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
 
