@@ -2,7 +2,7 @@
 
 3 parts of this excrecise:
 
-1. write two classes to implement an directional weighed graph.
+## 1. write two classes to implement an directional weighed graph.
 
   ### a. DiGraph. this class implements the simple actions to build the graph:
     
