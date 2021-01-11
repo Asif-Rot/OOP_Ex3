@@ -92,16 +92,21 @@ _this class implements the algorithms in the graph, and some other more methods:
    
 ![](https://upload.wikimedia.org/wikipedia/commons/6/60/Tarjan%27s_Algorithm_Animation.gif)
       
-#### Test class : TestGraphAlgo.
+#### Test class : TestGraphAlgo
 
-                  In this test all the methodes are being test. 
+- In this test all the methodes are being test. 
                   
 
-## 3. perform comparisons between the last project (OOP_ex2), NetworkX, and the graph here.
+## Perform comparisons between the last project (OOP_ex2), NetworkX, and our graph
 
-  On this part we ran the algorithm of each sources that wrote below.
+In this part we ran the algorithms for comparisons:
+- shortest_path
+- connected_component
+- connected_components
   
-  All the tabels and explanations are in the Wiki:
+  More info in the Wiki page:
+  
+  [Click here](https://github.com/Asif-Rot/OOP_Ex3/wiki)
   
   
         
