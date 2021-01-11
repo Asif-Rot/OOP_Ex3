@@ -2,9 +2,9 @@
 
 3 parts of this excrecise:
 
-## 1. write two classes to implement an directional weighed graph.
+## 1. write class to implement an directional weighed graph.
 
-  ### a. DiGraph. this class implements the simple actions to build the graph:
+### a. DiGraph. this class implements the simple actions to build the graph:
     
     add node
     
@@ -25,7 +25,13 @@
    The way we built the graph:
     There are 2 dictionaries: one for nodes and one for there neighbors. every single node keeps a list of his "out nodes" (as dest)
     
-  ### b. GraphAlgo. this class implements the algorithms on the graph, and some more methodes:
+#### Test class : TestDiGraph.
+
+                  In this test all the simple methodes are being test.
+    
+## 2. write class to implement an directional weighed graph.
+    
+### a. GraphAlgo. this class implements the algorithms on the graph, and some more methodes:
       
     load_from_json: load a graph from a json file. If there is no position for some node it will be placed by a random position.
       
@@ -41,6 +47,16 @@
       
     plot_graph: Plots the graph.
       
-2. 
-      
+#### Test class : TestDiGraph.
+
+                  In this test all the methodes are being test. 
+                  
+
+## 3. perform comparisons between the last project (OOP_ex2), NetworkX, and the graph here.
+
+  On this part we ran the algorithm of each sources that wrote below.
+  
+  All the tabels and explanations are in the Wiki:
+  
+  
         
