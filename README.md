@@ -1,6 +1,7 @@
 # OOP_Ex3
 last ex for the OOP course.
 3 parts of this excrecise:
+
 1. write two classes to implement an directional weighed graph.
 
   ### a. DiGraph. this class implements the simple actions to build the graph:
