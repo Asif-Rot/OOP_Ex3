@@ -106,7 +106,7 @@ In this part we ran the algorithms for comparisons:
   
   _More info in the Wiki page:_
   
-  [Click here](https://github.com/Asif-Rot/OOP_Ex3/wiki/Comparisons)
+  [Click here](https://github.com/Asif-Rot/OOP_Ex3/wiki)
   
   
         
