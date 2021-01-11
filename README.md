@@ -1,5 +1,9 @@
 # OOP_Ex3 - last ex for the OOP course.
 
+**Authors: Asif Rot & Maoz Lev**
+
+![](https://stock.wikimini.org/w/images/2/2c/Pok%C3%A9mon.gif)
+
 3 parts of this excrecise:
 
 ## 1. write class to implement an directional weighed graph.
@@ -50,7 +54,7 @@
 #### Algorithms:
     
 1. Dijkstra's algorithm: an algorithm for finding the shortest paths between nodes in a graph. (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
-![]https://en.wikipedia.org/wiki/File:Tarjan%27s_Algorithm_Animation.gif
+
 ![Alt Text](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#/media/File:Dijkstra_Animation.gif)
     
 2. Tarjan's strongly connected components algorithm is an algorithm for finding the strongly connected components (SCCs) of a directed graph.          
