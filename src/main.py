@@ -38,11 +38,11 @@ def check0():
     g.add_edge(1, 0, 1.1)
     g.add_edge(1, 2, 1.1)
     g.add_edge(2, 1, 1.3)
-    g.add_edge(2, 3, 1.1)
-    g.add_edge(3, 2, 1.1)
-    g.add_edge(1, 3, 1.9)
+    # g.add_edge(2, 3, 1.1)
+    # g.add_edge(3, 2, 1.1)
+    # g.add_edge(1, 3, 1.9)
     g.add_edge(3, 5, 1.9)
-    g.add_edge(5, 1, 1.9)
+    g.add_edge(5, 3, 1.9)
 
     g.remove_edge(1, 3)
     g.add_edge(1, 3, 10)
@@ -70,6 +70,7 @@ def check1():
     g_algo.load_from_json(file)  # init a GraphAlgo from a json file
     start = time.time_ns()
     g_algo.connected_components()
+    print(g_algo.connected_components())
     end = time.time_ns()
     print("time for connected components 10 vertices and 80 edges in seconds:", ((end - start)/1000000000))
 
@@ -109,24 +110,24 @@ def check1():
     end = time.time_ns()
     print("time for connected components 1000 vertices and 8000 edges in seconds:", ((end - start)/1000000000))
 
-    g = DiGraph()
-    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
-    file = "../data/G_1000_8000_1.json"
-    g_algo.load_from_json(file)
-    start = time.time_ns()
-    g_algo.connected_component(0)
-    end = time.time_ns()
-    print("time for connected component  1000 vertices and 8000 edges in seconds:", ((end - start)/1000000000))
-
     # g = DiGraph()
     # g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
-    # file = "../data/G_10000_80000_1.json"
-    # g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    # file = "../data/G_1000_8000_1.json"
+    # g_algo.load_from_json(file)
     # start = time.time_ns()
-    # g_algo.connected_components()
+    # g_algo.connected_component(0)
     # end = time.time_ns()
-    # print("time for connected components 10000 vertices and 80000 edges in seconds:", ((end - start)/1000000000))
-    #
+    # print("time for connected component  1000 vertices and 8000 edges in seconds:", ((end - start)/1000000000))
+
+    g = DiGraph()
+    g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
+    file = "../data/G_10000_80000_1.json"
+    g_algo.load_from_json(file)  # init a GraphAlgo from a json file
+    start = time.time_ns()
+    g_algo.connected_components()
+    end = time.time_ns()
+    print("time for connected components 10000 vertices and 80000 edges in seconds:", ((end - start)/1000000000))
+
     # g = DiGraph()
     # g_algo = GraphAlgo(g)  # init an empty graph - for the GraphAlgo
     # file = "../data/G_10000_80000_1.json"

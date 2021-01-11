@@ -157,49 +157,15 @@ class GraphAlgo(GraphAlgoInterface):
         Notes:
         If the graph is None or id1 is not in the graph, the function should return an empty list []
         """
-        vis = {}
-        q = queue.Queue()
-
         if id1 not in self.graph.nodes:
             return []
         if self.graph.v_size() == 1:
             return [id1]
 
-        for i in self.graph.nodes:
-            vis[i] = "not_vis"
-
-        vis[id1] = "vis"
-        q.put(id1)
-
-        out_list = []
-        while not q.empty():
-            node = q.get()
-            if vis[node] == "vis":
-                for k in self.graph.all_out_edges_of_node(node):
-                    if vis[k] == "not_vis":
-                        q.put(k)
-                        vis[k] = "vis"
-
-            out_list.append(node)
-            vis[node] = "complete"
-
-        for i in self.graph.nodes:
-            vis[i] = "not_vis"
-
-        vis[id1] = "vis"
-        q.put(id1)
-
-        in_list = []
-        while not q.empty():
-            node = q.get()
-            if vis[node] == "vis":
-                for k in self.graph.all_in_edges_of_node(node):
-                    if vis[k] == "not_vis":
-                        q.put(k)
-                        vis[k] = "vis"
-                in_list.append(node)
-                vis[node] = "complete"
-        return list(set(out_list) & set(in_list))
+        scc = self.connected_components()
+        for i in range(len(scc)):
+            if id1 in scc[i]:
+                return scc[i]
 
     def connected_components(self) -> List[list]:
         """
@@ -209,17 +175,56 @@ class GraphAlgo(GraphAlgoInterface):
         Notes:
         If the graph is None the function should return an empty list []
         """
-        if len(self.graph.nodes) == 0:
-            return []
-        vis = {}
-        list_for_us = []
-        for i in self.graph.nodes:
-            if i not in vis:
-                sure = self.connected_component(i)
-                for j in sure:
-                    vis[j] = j
-                list_for_us.append(sure)
-        return list_for_us
+        N = len(self.graph.nodes)
+        T = [[] for _ in range(N)]
+        L = []
+        U = [False] * N
+
+        for u in range(N):
+            if not U[u]:
+                U[u], S = True, [u]
+                while S:
+                    u, done = S[-1], True
+                    for v in self.graph.neighbors[u]:
+                        T[v].append(u)
+                        if not U[v]:
+                            U[v], done = True, False
+                            S.append(v)
+                            break
+                    if done:
+                        S.pop()
+                        L.append(u)
+
+        C = [None] * N
+        while L:
+            r = L.pop()
+            S = [r]
+            if U[r]:
+                U[r], C[r] = False, r
+            while S:
+                u, done = S[-1], True
+                for v in T[u] :
+                    if U[v]:
+                        U[v] = done = False
+                        S.append(v)
+                        C[v] = r
+                        break
+                if done:
+                    S.pop()
+        LL = [[] for _ in range(N)]
+        for i in range(len(C)):
+            if C[i] == i:
+                LL[i].append(C[i])
+            else:
+                t = C[i]
+                if t is not None:
+                    LL[t].append(i)
+        MM = []
+        for i in range(len(LL)):
+            tmp = LL[i]
+            if len(tmp) != 0:
+                MM.append(tmp)
+        return MM
 
     def plot_graph(self) -> None:
         """
