@@ -90,7 +90,7 @@ _this class implements the algorithms in the graph, and some other more methods:
 2. Kosaraju's strongly connected components algorithm is an algorithm for finding the strongly connected components (SCCs) of a directed graph.          
    (https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
    
-![](https://inginious.org/course/competitive-programming/graphs-scc/toposcc2.gif)
+![](https://miro.medium.com/max/1666/1*mW2CO2dhTkvgsJK7oSrFJg.gif)
       
 #### Test class : TestGraphAlgo
 
