@@ -48,9 +48,11 @@ _this class implements the simple actions that build our graph:_
     Note: there is no need for node_data class.
 
    _The way we built the graph:_
-    There are 2 dictionaries: 
-    - nodes - {key, position}
-    - neighbors - {key, {key, weight}} - Every single node keeps a list of his "out nodes" (as destination)
+   
+   There are 2 dictionaries: 
+   
+   - nodes - {key, position}
+   - neighbors - {key, {key, weight}} - Every single node keeps a list of his "out nodes" (as destination)
     
 #### Test class : TestDiGraph
 
