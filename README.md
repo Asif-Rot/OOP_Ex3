@@ -33,7 +33,7 @@
 
                   In this test all the simple methodes are being test.
     
-## 2. write class to implement an directional weighed graph.
+## 2. write class to implement an Algorithms in directional weighed graph.
     
 ### a. GraphAlgo. this class implements the algorithms on the graph, and some more methodes:
       
