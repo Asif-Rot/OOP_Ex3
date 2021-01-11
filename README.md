@@ -84,12 +84,13 @@ _this class implements the algorithms in the graph, and some other more methods:
     
 1. Dijkstra's algorithm: an algorithm for finding the shortest paths between nodes in a graph. (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
 
-![Alt Text](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#/media/File:Dijkstra_Animation.gif)
+![](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
+
     
 2. Tarjan's strongly connected components algorithm is an algorithm for finding the strongly connected components (SCCs) of a directed graph.          
    (https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm)
    
-![Alt Text](https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm#/media/File:Tarjan's_Algorithm_Animation.gif)
+![](https://upload.wikimedia.org/wikipedia/commons/6/60/Tarjan%27s_Algorithm_Animation.gif)
       
 #### Test class : TestGraphAlgo.
 
