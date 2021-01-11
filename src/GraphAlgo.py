@@ -15,7 +15,10 @@ class GraphAlgo(GraphAlgoInterface):
         """
         Init graph Algo
         """
-        self.graph = g
+        if g is not None:
+            self.graph = g
+        else:
+            self.graph = DiGraph()
         self.vis = {}
 
     def get_graph(self) -> GraphInterface:
