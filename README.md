@@ -108,7 +108,7 @@ _For more info:_ (https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
       
 #### Test class : TestGraphAlgo
 
-- In this test all the GraphAlgo methods are being tested. 
+- In this class all the GraphAlgo methods are being tested.
                   
 
 ## Perform comparisons between this project, our last project (OOP_Ex2) and NetworkX package
