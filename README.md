@@ -102,7 +102,7 @@ _For more info:_ (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
 	- Second, the algorithm do a post-order DFS on 'tmp_list' in order to pop the root vertices from 'List' and mark the SCCs to a list.
 	- Finally, we take this list and turn it into a list of lists where every list is a SCC.
     
-   _For more info:_ (https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
+_For more info:_ (https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
    
 ![](https://miro.medium.com/max/1666/1*mW2CO2dhTkvgsJK7oSrFJg.gif)
       
