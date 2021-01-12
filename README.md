@@ -86,9 +86,9 @@ _this class implements the algorithms in the graph, and some other more methods:
 	At first, we initialize all the vertices distance to infinity.
 	In the algorithm loop - as long as there are vertices in the queue:
   
-- Each neighbor of that node, will be updated to the minimal value of dist.
+	- Each neighbor of that node, will be updated to the minimal value of dist.
     
-- Adding the node which has the shortest distance to the queue.
+	- Adding the node which has the shortest distance to the queue.
 
 _For more info:_ (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
 
@@ -97,10 +97,10 @@ _For more info:_ (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
     
 2. Kosaraju's strongly connected components algorithm is an algorithm for finding the strongly connected components (SCCs) of a directed graph.
     
-- The key point of the algorithm is that during the first traversal of the graph edges,
-vertices are prepended to the list 'List' in post-order DFS relative to the graph being explored.
-- Second, the algorithm do a post-order DFS on 'tmp_list' in order to pop the root vertices from 'List' and mark the SCCs to a list.
-- Finally, we take this list and turn it into a list of lists where every list is a SCC.
+	- The key point of the algorithm is that during the first traversal of the graph edges,
+	vertices are prepended to the list 'List' in post-order DFS relative to the graph being explored.
+	- Second, the algorithm do a post-order DFS on 'tmp_list' in order to pop the root vertices from 'List' and mark the SCCs to a list.
+	- Finally, we take this list and turn it into a list of lists where every list is a SCC.
     
    _For more info:_ (https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
    
