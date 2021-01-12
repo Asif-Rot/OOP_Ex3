@@ -83,7 +83,7 @@ class MyTestCase(unittest.TestCase):
         self.graph.remove_edge(6, 7)
         self.graph.remove_edge(6, 8)
         self.graph.remove_edge(9, 8)
-        self.assertEqual([9, 6], self._g.connected_component(9))
+        self.assertEqual([6, 9], self._g.connected_component(9))
         self.assertEqual([7], self._g.connected_component(7))
         self.assertEqual([5], self._g.connected_component(5))
 
