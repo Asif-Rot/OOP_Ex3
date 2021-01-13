@@ -31,13 +31,13 @@ In this file, we will explain:
 
 _this class implements the simple actions that build our graph:_
     
-    add node
+    add node - Adding a node to the graph
     
-    remove node
+    remove node - Removing a node from the graph
     
-    add edge - *can't update weights*
+    add edge - Adding edge between two nodes (*can't update weights*)
     
-    remove edge 
+    remove edge - Remove edge between two nodes 
     
     get_all_v - returns all the nodes in the graph
     
@@ -45,7 +45,7 @@ _this class implements the simple actions that build our graph:_
     
     all_out_edges_of_node - returns all the nodes that are connected to the chosen node as src. (return all destinations fron the specific src)
 
-    Note: there is no need for node_data class.
+    Note: there was no need for node_data class.
 
    _The way we built the graph:_
    
@@ -56,7 +56,7 @@ _this class implements the simple actions that build our graph:_
     
 #### Test class : TestDiGraph
 
-- In this class all the graph methods are being tested.
+- In this class all the DiGraph methods are being tested.
     
 
 ## Write a class to implement the algorithms for the directed weighted graph
@@ -72,29 +72,43 @@ _this class implements the algorithms in the graph, and some other more methods:
     shortest_path - Returns the shortest path from node id1 to node id2 using Dijkstra's Algorithm.
                     Return: The distance of the path, a list of the nodes ids that the path goes through.
       
-    connected_component - By using Tarjan Algorithm, we can find the Strongly Connected Component(SCC) that the chosen node is a part of.
-                          Return: The list of nodes in the SCC.
+    connected_component - By using Kosaraju's algorithm, we can find the Strongly Connected Component(SCC) that the chosen node is a part of.
+                          Return: The list of nodes in the SCC that the chosen node is a part of.
       
-    connected_components - By using Tarjan Algorithm, we can find all the Strongly Connected Component(SCC) in the graph.
-                           Return: The list of nodes in the SCC.
+    connected_components - By using Kosaraju's algorithm, we can find all the Strongly Connected Components(SCC) in the graph.
+                           Return: A list of lists of nodes in their SCCs.
       
     plot_graph - Plots the graph.
     
 #### **Algorithms:**
     
-1. Dijkstra's algorithm: an algorithm for finding the shortest paths between nodes in a graph. (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
+1. Dijkstra's algorithm: an algorithm for finding the shortest paths between nodes in a graph.
+	At first, we initialize all the vertices distance to infinity.
+	In the algorithm loop - as long as there are vertices in the queue:
+  
+	- Each neighbor of that node, will be updated to the minimal value of dist.
+    
+	- Adding the node which has the shortest distance to the queue.
+
+_For more info:_ (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
 
     
-2. Kosaraju's strongly connected components algorithm is an algorithm for finding the strongly connected components (SCCs) of a directed graph.          
-   (https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
+2. Kosaraju's strongly connected components algorithm is an algorithm for finding the strongly connected components (SCCs) of a directed graph.
+    
+	- The key point of the algorithm is that during the first traversal of the graph edges,
+	vertices are prepended to the list 'List' in post-order DFS relative to the graph being explored.
+	- Second, the algorithm do a post-order DFS on 'tmp_list' in order to pop the root vertices from 'List' and mark the SCCs to a list.
+	- Finally, we take this list and turn it into a list of lists where every list is a SCC.
+    
+_For more info:_ (https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
    
 ![](https://miro.medium.com/max/1666/1*mW2CO2dhTkvgsJK7oSrFJg.gif)
       
 #### Test class : TestGraphAlgo
 
-- In this test all the methods are being tested. 
+- In this class all the GraphAlgo methods are being tested.
                   
 
 ## Perform comparisons between this project, our last project (OOP_Ex2) and NetworkX package
