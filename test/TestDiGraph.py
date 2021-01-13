@@ -50,10 +50,10 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(5, self.graph.v_size())
         self.assertTrue(self.graph.remove_node(1))
         self.assertEqual(4, self.graph.v_size())
-        self.assertEqual(22, self.graph.get_mc())
+        self.assertEqual(17, self.graph.get_mc())
         self.assertFalse(self.graph.remove_node(9))
         self.assertEqual(4, self.graph.v_size())
-        self.assertEqual(22, self.graph.get_mc())
+        self.assertEqual(17, self.graph.get_mc())
 
     def test_add_edge(self):
         self.assertEqual(11, self.graph.e_size())

@@ -116,12 +116,10 @@ class DiGraph(GraphInterface):
                 if node_id in self.neighbors.get(k):
                     del self.neighbors[k][node_id]
                     self.edgeSize -= 1
-                    self.MC += 1
 
                 if k in self.neighbors.get(node_id):
                     del self.neighbors[node_id][k]
                     self.edgeSize -= 1
-                    self.MC += 1
 
             del self.nodes[node_id]
             self.MC += 1
